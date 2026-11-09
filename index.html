@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b16">
+  <meta name="description" content="وب‌سایت شخصی ایلیا رستمی؛ توسعه‌دهنده وب، طراح تجربه دیجیتال و علاقه‌مند به هوش مصنوعی.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ایلیا رستمی | توسعه‌دهنده وب">
+  <meta property="og:description" content="ایده‌ها را با خلاقیت و کدنویسی به تجربه‌های دیجیتال مدرن تبدیل می‌کنم.">
+  <meta property="og:locale" content="fa_IR">
+  <title>ایلیا رستمی | توسعه‌دهنده وب و خالق تجربه‌های دیجیتال</title>
+  <link rel="icon" type="image/png" href="eilia.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root{
+      --bg:#050b08;--bg2:#09140f;--panel:rgba(13,35,24,.66);
+      --green:#00ff88;--green2:#00c878;--emerald:#10b981;--soft:#6ee7b7;
+      --text:#f0fff6;--muted:#94a99b;--border:rgba(0,255,136,.16);
+      --glow:0 0 34px rgba(0,255,136,.13);--radius:24px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:100px}
+    body{font-family:'Vazirmatn',sans-serif;background:var(--bg);color:var(--text);line-height:1.9;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;z-index:-3;background:radial-gradient(ellipse at 15% 15%,rgba(0,255,136,.09),transparent 34%),radial-gradient(ellipse at 85% 45%,rgba(16,185,129,.08),transparent 35%),linear-gradient(145deg,#050b08,#07120d 55%,#040906)}
+    body:after{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.13;background-image:linear-gradient(rgba(0,255,136,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,136,.08) 1px,transparent 1px);background-size:58px 58px;mask-image:linear-gradient(to bottom,black,transparent 85%)}
+    a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}
+    button{cursor:pointer}::selection{background:var(--green);color:#031009}
+    .container{width:min(1160px,calc(100% - 42px));margin:auto}
+    .ambient{position:fixed;width:420px;height:420px;border-radius:50%;filter:blur(110px);opacity:.12;pointer-events:none;z-index:-1}
+    .ambient.one{background:#00ff88;top:8%;right:-230px}.ambient.two{background:#10b981;bottom:0;left:-240px}
+    #particles{position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.42}
+    .nav-wrap{position:fixed;top:16px;left:0;right:0;z-index:1000;padding:0 20px}
+    .navbar{max-width:1200px;margin:auto;min-height:72px;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:18px;background:rgba(5,14,9,.78);border:1px solid var(--border);border-radius:20px;backdrop-filter:blur(22px);box-shadow:0 12px 40px rgba(0,0,0,.25)}
+    .brand{display:flex;align-items:center;gap:12px;min-width:170px}
+    .brand img{width:58px;height:48px;object-fit:contain}
+    .brand span{font-weight:800;font-size:15px;white-space:nowrap}.brand small{display:block;color:var(--soft);font-size:10px;font-weight:400;letter-spacing:.5px}
+    .nav-links{display:flex;align-items:center;gap:22px}.nav-links a{font-size:13px;color:#b6c8bd;transition:.25s;white-space:nowrap}
+    .nav-links a:hover,.nav-links a.active{color:var(--green);text-shadow:0 0 15px rgba(0,255,136,.45)}
+    .nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:1px solid rgba(0,255,136,.4);border-radius:13px;padding:11px 18px;color:#031009;background:linear-gradient(135deg,var(--green),#65e6ae);font-weight:800;font-size:13px;box-shadow:0 0 25px rgba(0,255,136,.15);transition:.3s}
+    .nav-cta:hover,.btn:hover{transform:translateY(-3px);box-shadow:0 0 32px rgba(0,255,136,.3)}
+    .menu-toggle{display:none;background:transparent;color:var(--green);border:1px solid var(--border);border-radius:10px;width:42px;height:42px}
+    .hero{min-height:100vh;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:55px;padding:145px 0 90px;position:relative}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--soft);border:1px solid var(--border);background:rgba(0,255,136,.045);padding:7px 13px;border-radius:30px;font-size:12px;margin-bottom:22px}
+    .pulse{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green);animation:pulse 1.8s infinite}
+    @keyframes pulse{50%{opacity:.35;transform:scale(.7)}}
+    h1{font-size:clamp(36px,5vw,62px);line-height:1.35;font-weight:900;letter-spacing:-1.5px}
+    .gradient-text{background:linear-gradient(90deg,#f0fff6 8%,#6ee7b7 55%,#00ff88);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .typed-line{font-size:clamp(17px,2vw,23px);font-weight:700;color:var(--green);min-height:42px;margin:12px 0}
+    .cursor{display:inline-block;width:2px;height:24px;background:var(--green);vertical-align:middle;margin-right:4px;animation:blink .8s steps(2) infinite}
+    @keyframes blink{50%{opacity:0}}
+    .hero-desc{color:var(--muted);max-width:600px;font-size:15px;line-height:2.2}
+    .hero-actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
+    .btn.secondary{color:var(--text);background:rgba(13,35,24,.55);box-shadow:none}
+    .hero-meta{display:flex;gap:26px;flex-wrap:wrap;margin-top:38px}
+    .meta-item{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:12px}
+    .meta-item i{color:var(--green);font-size:18px}
+    .hero-visual{position:relative;min-height:490px;display:grid;place-items:center;perspective:1000px}
+    .orbit{position:absolute;width:390px;height:390px;border:1px solid rgba(0,255,136,.18);border-radius:50%;transform:rotateX(68deg);box-shadow:0 0 45px rgba(0,255,136,.06);animation:orbit 18s linear infinite}
+    .orbit:before,.orbit:after{content:"";position:absolute;width:9px;height:9px;background:var(--green);border-radius:50%;box-shadow:0 0 20px var(--green);top:50%;left:-4px}
+    .orbit:after{left:auto;right:25px;top:12%}
+    @keyframes orbit{to{transform:rotateX(68deg) rotateZ(360deg)}}
+    .logo-stage{width:min(390px,82vw);height:330px;display:grid;place-items:center;position:relative;border:1px solid rgba(0,255,136,.18);border-radius:34px;background:linear-gradient(145deg,rgba(15,44,29,.72),rgba(5,14,9,.45));backdrop-filter:blur(18px);box-shadow:0 30px 90px rgba(0,0,0,.4),inset 0 0 50px rgba(0,255,136,.04);transform:rotateY(-8deg) rotateX(4deg);animation:float 6s ease-in-out infinite}
+    @keyframes float{50%{transform:translateY(-13px) rotateY(-5deg) rotateX(2deg)}}
+    .logo-stage:before{content:"";position:absolute;inset:-1px;border-radius:34px;padding:1px;background:linear-gradient(135deg,rgba(0,255,136,.55),transparent 40%,rgba(0,200,120,.3));mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;pointer-events:none}
+    .logo-stage img{width:85%;max-height:260px;object-fit:contain;filter:drop-shadow(0 0 22px rgba(0,255,136,.22))}
+    .float-chip{position:absolute;padding:10px 14px;background:rgba(5,17,10,.88);border:1px solid var(--border);border-radius:13px;color:var(--soft);font-size:12px;box-shadow:var(--glow);backdrop-filter:blur(12px);animation:float 5s ease-in-out infinite}
+    .chip-html{top:55px;right:0}.chip-python{bottom:65px;left:0;animation-delay:1s}.chip-js{top:90px;left:5px;animation-delay:2s}
+    .terminal{position:absolute;bottom:0;right:50%;transform:translateX(50%);width:280px;background:rgba(3,12,7,.9);border:1px solid var(--border);border-radius:14px;padding:12px 15px;font:11px/1.9 monospace;color:#8ce9b9;direction:ltr;text-align:left;box-shadow:0 15px 45px rgba(0,0,0,.35)}
+    .terminal b{color:var(--green)}
+    section{padding:105px 0;position:relative}
+    .section-head{text-align:center;margin-bottom:52px}
+    .section-kicker{color:var(--green);font-size:12px;font-weight:700;letter-spacing:1px}
+    .section-title{font-size:clamp(25px,3.4vw,38px);font-weight:900;margin:9px 0 12px}
+    .section-subtitle{color:var(--muted);font-size:14px;max-width:650px;margin:auto}
+    .glass{background:linear-gradient(145deg,rgba(13,35,24,.76),rgba(7,19,12,.65));border:1px solid var(--border);border-radius:var(--radius);backdrop-filter:blur(16px);box-shadow:0 18px 50px rgba(0,0,0,.16);transition:transform .35s,border-color .35s,box-shadow .35s}
+    .glass:hover{border-color:rgba(0,255,136,.38);box-shadow:0 22px 55px rgba(0,0,0,.25),0 0 28px rgba(0,255,136,.07)}
+    .about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:24px}
+    .about-main{padding:32px}.about-main h3{font-size:22px;margin-bottom:16px}.about-main p{color:var(--muted);font-size:14px;line-height:2.3}
+    .about-logo{display:flex;align-items:center;gap:16px;margin-bottom:20px}.about-logo img{width:92px;height:65px;object-fit:contain}
+    .about-logo span{color:var(--soft);font-size:12px}
+    .traits{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
+    .trait{padding:19px;min-height:105px}.trait i{font-size:20px;color:var(--green);margin-bottom:8px}.trait strong{display:block;font-size:14px}.trait small{color:var(--muted);font-size:11px}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:22px}
+    .stat{padding:21px;text-align:center}.stat strong{font-size:27px;color:var(--green);display:block}.stat span{font-size:12px;color:var(--muted)}
+    .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .skill-group{padding:24px}.skill-group h3{display:flex;align-items:center;gap:10px;font-size:17px;margin-bottom:19px}.skill-group h3 i{color:var(--green)}
+    .skill-list{display:flex;flex-wrap:wrap;gap:10px}.skill{display:flex;align-items:center;gap:8px;padding:9px 12px;border:1px solid rgba(0,255,136,.11);background:rgba(0,255,136,.035);border-radius:11px;color:#d5e8dc;font-size:12px;transition:.25s;direction:ltr}
+    .skill i{color:var(--soft)}.skill:hover{transform:translateY(-4px);border-color:var(--green);box-shadow:0 0 18px rgba(0,255,136,.1)}
+    .timeline{max-width:850px;margin:auto;position:relative}.timeline:before{content:"";position:absolute;right:15px;top:10px;bottom:10px;width:1px;background:linear-gradient(var(--green),rgba(0,255,136,.05))}
+    .timeline-item{position:relative;padding:0 55px 30px 0}.timeline-dot{position:absolute;right:7px;top:8px;width:17px;height:17px;background:var(--bg);border:3px solid var(--green);border-radius:50%;box-shadow:0 0 15px rgba(0,255,136,.45)}
+    .timeline-card{padding:25px}.timeline-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.timeline-card h3{font-size:18px}.timeline-card .date{font-size:11px;color:var(--green);background:rgba(0,255,136,.08);padding:4px 10px;border-radius:20px}
+    .timeline-card p{color:var(--muted);font-size:13px;line-height:2.2;margin-top:12px}.tag-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.tag{font-size:10px;color:var(--soft);border:1px solid var(--border);padding:4px 9px;border-radius:20px}
+    .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+    .project-card{overflow:hidden}.project-visual{height:235px;position:relative;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 50% 45%,rgba(0,255,136,.15),transparent 55%),linear-gradient(135deg,#0b2115,#07100b)}
+    .project-visual:before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,255,136,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,136,.04) 1px,transparent 1px);background-size:24px 24px}
+    .browser-mock{position:relative;width:76%;height:155px;border:1px solid rgba(0,255,136,.3);border-radius:12px;background:rgba(3,12,7,.88);box-shadow:0 15px 40px rgba(0,0,0,.35);transform:perspective(600px) rotateY(-7deg) rotateX(4deg);overflow:hidden}
+    .browser-bar{height:24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:5px;padding:0 9px}.browser-bar i{width:5px;height:5px;border-radius:50%;background:#315c43}
+    .mock-content{padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px;direction:ltr}.mock-block{height:78px;border-radius:7px;background:linear-gradient(135deg,rgba(0,255,136,.22),rgba(0,200,120,.03));border:1px solid rgba(0,255,136,.12)}
+    .mock-lines span{display:block;height:6px;margin:8px 0;border-radius:5px;background:rgba(110,231,183,.3)}.mock-lines span:nth-child(2){width:75%}.mock-lines span:nth-child(3){width:52%}
+    .project-content{padding:25px}.project-content h3{font-size:19px}.project-content p{color:var(--muted);font-size:13px;line-height:2.2;margin:10px 0 15px}.project-features{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+    .project-link{display:inline-flex;gap:8px;align-items:center;color:var(--green);font-size:13px;font-weight:700}.project-link:hover{gap:13px}
+    .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.service{padding:23px;min-height:185px}.service-icon{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;color:var(--green);background:rgba(0,255,136,.08);border:1px solid var(--border);font-size:20px;margin-bottom:17px}.service h3{font-size:14px;margin-bottom:8px}.service p{font-size:11px;color:var(--muted);line-height:2}
+    .contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:22px}.contact-info{padding:28px}.contact-info h3{font-size:20px;margin-bottom:12px}.contact-info>p{color:var(--muted);font-size:13px;line-height:2.2;margin-bottom:20px}
+    .contact-row{display:flex;align-items:center;gap:13px;padding:14px 0;border-top:1px solid rgba(0,255,136,.09)}.contact-icon{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;color:var(--green);background:rgba(0,255,136,.07)}.contact-row small{display:block;color:var(--muted);font-size:10px}.contact-row strong{font-size:12px;direction:ltr;display:block;text-align:right;overflow-wrap:anywhere}
+    .copy-btn{margin-right:auto;border:0;background:transparent;color:var(--soft);padding:8px}.contact-form{padding:28px}.contact-form h3{font-size:19px;margin-bottom:18px}.field{margin-bottom:14px}.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:7px}.field input,.field textarea{width:100%;border:1px solid var(--border);border-radius:12px;background:rgba(3,12,7,.6);color:var(--text);padding:12px 14px;outline:none;font-size:13px;transition:.25s}.field input:focus,.field textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(0,255,136,.07)}.field textarea{min-height:110px;resize:vertical}
+    .form-note{font-size:11px;color:var(--muted);margin-top:12px;line-height:1.9}.form-status{font-size:12px;color:var(--soft);margin-top:10px;min-height:22px}
+    footer{padding:30px 0;border-top:1px solid var(--border);background:rgba(2,8,5,.55)}.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}.footer-brand{display:flex;align-items:center;gap:13px}.footer-brand img{width:72px;height:55px;object-fit:contain}.footer-brand span{font-size:12px;color:var(--muted)}.footer-copy{font-size:11px;color:var(--muted)}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+    .back-top{position:fixed;bottom:22px;left:22px;width:45px;height:45px;border-radius:14px;border:1px solid var(--border);background:rgba(5,18,10,.85);color:var(--green);display:grid;place-items:center;opacity:0;visibility:hidden;transition:.3s;z-index:50}.back-top.show{opacity:1;visibility:visible}
+    @media(max-width:1000px){.nav-links{gap:12px}.nav-links a{font-size:11px}.services-grid{grid-template-columns:repeat(2,1fr)}.skills-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:780px){.nav-wrap{top:9px;padding:0 10px}.navbar{min-height:64px}.menu-toggle{display:block}.nav-cta{display:none}.nav-links{position:absolute;top:74px;right:10px;left:10px;display:none;flex-direction:column;align-items:stretch;gap:0;padding:10px;background:rgba(5,15,9,.97);border:1px solid var(--border);border-radius:16px;backdrop-filter:blur(20px)}.nav-links.open{display:flex}.nav-links a{padding:12px;font-size:13px;border-bottom:1px solid rgba(0,255,136,.07)}.nav-links a:last-child{border:0}.hero{grid-template-columns:1fr;text-align:center;padding-top:130px;gap:25px}.hero-copy{order:1}.hero-visual{order:0;min-height:370px}.hero-desc{margin:auto}.hero-actions,.hero-meta{justify-content:center}.logo-stage{height:270px;width:min(350px,85vw)}.logo-stage img{max-height:210px}.orbit{width:310px;height:310px}.terminal{bottom:-3px}.about-grid,.contact-grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.projects-grid{grid-template-columns:1fr}}
+    @media(max-width:520px){.container{width:min(100% - 28px,1160px)}section{padding:75px 0}.brand img{width:48px}.brand span{font-size:13px}.hero{padding-bottom:65px}.hero-visual{min-height:330px}.logo-stage{height:235px}.logo-stage img{max-height:180px}.orbit{width:270px;height:270px}.float-chip{font-size:10px;padding:7px 10px}.chip-html{right:-3px;top:40px}.chip-python{left:-3px;bottom:45px}.chip-js{top:65px;left:-2px}.terminal{width:240px;font-size:10px}.traits,.skills-grid,.services-grid{grid-template-columns:1fr 1fr}.about-main,.contact-info,.contact-form{padding:21px}.timeline-item{padding-right:39px}.timeline:before{right:9px}.timeline-dot{right:1px}.timeline-card{padding:19px}.project-visual{height:200px}.footer-inner{justify-content:center;text-align:center}.footer-brand{justify-content:center}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+    * {
+    -webkit-tap-highlight-color: transparent;
+}
+
+a, button {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a:focus,
+a:active,
+button:focus,
+button:active {
+    outline: none;
+    box-shadow: none;
+}
+/* Remove default blue click background */
+.navbar a,
+.navbar button,
+.navbar i,
+.navbar svg {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+/* Remove focus and active background */
+.navbar a:focus,
+.navbar a:active,
+.navbar button:focus,
+.navbar button:active {
+    outline: none;
+    box-shadow: none;
+    background-color: transparent;
+}
+    /* MOBILE RESPONSIVE REFINEMENT — keeps all existing sections and content */
+    img,canvas,svg{max-width:100%}
+    .container,section,main,.glass,.about-grid>*,.skills-grid>*,.projects-grid>*,.services-grid>*,.contact-grid>*,.timeline-card{min-width:0}
+    .skill,.tag,.project-content,.about-main,.timeline-card,.contact-row{overflow-wrap:anywhere}
+    .project-card,.service,.skill-group,.trait,.stat,.about-main,.contact-info,.contact-form{height:auto}
+    .project-content,.skill-group,.about-main,.contact-info,.contact-form{overflow:hidden}
+    @media(max-width:780px){
+      html{scroll-padding-top:84px}.container{width:min(100% - 32px,680px)}section{padding:78px 0}
+      .nav-wrap{padding-inline:10px}.navbar{gap:10px;padding:9px 12px}.brand{min-width:0;gap:8px}
+      .brand img{width:43px;height:42px;flex:0 0 auto}.brand span{font-size:13px}
+      .nav-links{max-height:min(72vh,520px);overflow-y:auto;overscroll-behavior:contain}
+      .hero{min-height:auto;grid-template-columns:minmax(0,1fr);gap:26px;padding:112px 0 68px}
+      .hero-visual{min-height:clamp(290px,72vw,370px)}.hero-copy{width:100%}.hero-desc{max-width:58ch}
+      .hero-meta{gap:12px 20px}.about-grid,.contact-grid{grid-template-columns:minmax(0,1fr)}
+      .about-main{padding:clamp(20px,4vw,30px)}.traits{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .stats{grid-template-columns:repeat(2,minmax(0,1fr))}.skills-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .projects-grid{grid-template-columns:minmax(0,1fr)}.services-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .timeline-item{padding-right:42px}.timeline-card{padding:21px}.timeline-top{align-items:flex-start}
+      .project-card{display:grid;grid-template-columns:minmax(0,1fr)}.project-visual{min-height:205px;height:auto}
+      .project-content{padding:22px}.contact-row{gap:10px}.footer-inner{justify-content:center;text-align:center}
+      .footer-brand{justify-content:center}
+    }
+    @media(max-width:560px){
+      .container{width:calc(100% - 28px)}section{padding:66px 0}.section-head{margin-bottom:30px}
+      .section-title{font-size:clamp(23px,6vw,30px);line-height:1.65}.section-subtitle{font-size:13px;line-height:2}
+      .hero{padding-top:100px;gap:18px}.hero-visual{min-height:300px}
+      .logo-stage{width:min(310px,78vw);height:218px;border-radius:25px}.logo-stage img{width:82%;max-height:170px}
+      .orbit{width:min(260px,72vw);height:min(260px,72vw)}.float-chip{font-size:10px;padding:6px 9px}
+      .chip-html{top:30px;right:0}.chip-js{top:58px;left:0}.chip-python{bottom:39px;left:0}
+      .terminal{width:min(235px,78vw);height: 103px; bottom:20px;font-size:9px;padding:9px 11px}
+      h1{font-size:clamp(31px,9vw,43px);letter-spacing:-.7px}
+      .typed-line{font-size:clamp(15px,4.5vw,19px);min-height:36px}
+      .hero-desc{font-size:13px;line-height:2.15}.hero-actions{display:grid;grid-template-columns:1fr;gap:10px}
+      .hero-actions .btn{width:100%}.hero-meta{display:grid;grid-template-columns:1fr;justify-content:start;text-align:right;width:fit-content;margin:25px auto 0}
+      .about-logo{align-items:flex-start;gap:12px;flex-wrap:wrap}.about-logo img{width:76px;height:55px}
+      .about-main h3{font-size:19px}.about-main p{font-size:13px;line-height:2.15}
+      .traits{grid-template-columns:minmax(0,1fr);gap:10px}.trait{min-height:0;padding:16px}
+      .stats{gap:10px}.stat{padding:15px 10px}.stat strong{font-size:23px}
+      .skills-grid{grid-template-columns:minmax(0,1fr);gap:12px}.skill-group{padding:19px}
+      .skill-group h3{font-size:15px;margin-bottom:14px}.skill-list{gap:8px}
+      .skill{max-width:100%;white-space:normal;font-size:11px;padding:8px 10px}
+      .timeline:before{right:8px}.timeline-item{padding:0 32px 20px 0}.timeline-dot{right:0;width:16px;height:16px}
+      .timeline-card{padding:17px}.timeline-card h3{font-size:15px}.timeline-card p{font-size:12px;line-height:2.1}
+      .timeline-card .date{white-space:normal}.tag-row{gap:6px}.tag{font-size:9px}
+      .projects-grid{gap:16px}.project-visual{min-height:175px}.browser-mock{width:84%;height:135px}
+      .mock-content{padding:12px;gap:8px}.mock-block{height:68px}.project-content{padding:18px}
+      .project-content h3{font-size:16px;line-height:1.8}.project-content p{font-size:12px;line-height:2.1}
+      .project-features{gap:6px}.services-grid{grid-template-columns:minmax(0,1fr);gap:11px}
+      .service{min-height:0;padding:18px}.service-icon{width:42px;height:42px;margin-bottom:12px}
+      .service p{font-size:12px}.contact-info,.contact-form{padding:19px}
+      .contact-info h3,.contact-form h3{font-size:17px}.contact-row strong{font-size:11px}
+      .contact-icon{width:36px;height:36px;flex:0 0 36px}.copy-btn{padding:6px}
+      .field input,.field textarea{font-size:16px}.contact-form .btn{width:100%}
+      .footer-brand{flex-direction:column;gap:8px}.footer-brand img{width:66px;height:48px}
+      .footer-copy{line-height:2}.back-top{width:41px;height:41px;bottom:14px;left:14px}
+    }
+    @media(max-width:360px){
+      .container{width:calc(100% - 22px)}.navbar{padding-inline:9px}
+      .brand img{width:36px;height:36px}.brand span{font-size:12px}
+      .menu-toggle{width:38px;height:38px;flex:0 0 38px}
+      .hero-visual{min-height:275px}.logo-stage{height:195px}
+      .orbit{width:230px;height:230px}.float-chip{font-size:9px}.terminal{width:215px}
+      .stats{gap:8px}.stat span{font-size:10px}
+    }
+    @media(prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important}}
+    /* Improved Hero Meta Items — Mobile */
+@media (max-width: 560px) {
+
+  .hero {
+    padding-bottom: 25px !important;
+    gap: 14px;
+  }
+
+  .hero-meta {
+    width: 100%;
+    max-width: 340px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 9px;
+    margin: 23px auto 0;
+  }
+
+  .meta-item {
+    width: 100%;
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 13px;
+
+    padding: 11px 15px;
+    border: 1px solid rgba(0, 255, 136, .15);
+    border-radius: 14px;
+
+    background: linear-gradient(
+      120deg,
+      rgba(0, 255, 136, .065),
+      rgba(13, 35, 24, .48)
+    );
+
+    color: #c5d9cc;
+    font-size: 12px;
+    line-height: 1.8;
+    text-align: right;
+
+    transition: .25s ease;
+  }
+
+  .meta-item i {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 10px;
+    background: rgba(0, 255, 136, .09);
+    border: 1px solid rgba(0, 255, 136, .13);
+
+    color: var(--green);
+    font-size: 15px;
+  }
+
+  /* کاهش فاصله بین صفحه اصلی و درباره من */
+  #about {
+    padding-top: 35px;
+  }
+
+  #about .section-head {
+    margin-bottom: 25px;
+  }
+}
+
+/* موبایل‌های کوچک */
+@media (max-width: 360px) {
+  .hero-meta {
+    max-width: 100%;
+    gap: 8px;
+  }
+
+  .meta-item {
+    padding: 10px 11px;
+    font-size: 11px;
+    gap: 10px;
+  }
+
+  .meta-item i {
+    width: 31px;
+    height: 31px;
+    flex-basis: 31px;
+    font-size: 14px;
+  }
+
+  #about {
+    padding-top: 28px;
+  }
+    /* Remove default blue click background */
+  .navbar a,
+  .navbar button,
+  .navbar i,
+  .navbar svg {
+      -webkit-tap-highlight-color: transparent;
+      outline: none;
+  }
+
+  /* Remove focus and active background */
+  .navbar a:focus,
+  .navbar a:active,
+  .navbar button:focus,
+  .navbar button:active {
+      outline: none;
+      box-shadow: none;
+      background-color: transparent;
+  }
+
+}
+
+    /* ===== Visual refresh: bright, professional portfolio ===== */
+    :root{
+      --bg:#f5f7fb;--bg2:#edf1f7;--panel:rgba(255,255,255,.88);
+      --green:#16866b;--green2:#0e725b;--emerald:#239b83;--soft:#317d70;
+      --text:#202938;--muted:#687487;--border:rgba(76,93,120,.16);
+      --glow:0 12px 35px rgba(41,58,82,.08);--radius:22px;
+      --blue:#3978d6;--violet:#8064c8;
+    }
+    body{background:var(--bg);color:var(--text)}
+    body:before{background:radial-gradient(ellipse at 12% 12%,rgba(91,151,224,.13),transparent 34%),radial-gradient(ellipse at 88% 40%,rgba(104,190,170,.13),transparent 35%),linear-gradient(145deg,#f8faff,#f0f4fa 55%,#f8f9fc)}
+    body:after{opacity:.35;background-image:linear-gradient(rgba(89,111,145,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(89,111,145,.055) 1px,transparent 1px)}
+    ::selection{background:#cfe9e2;color:#173c35}
+    .ambient.one{background:#80b7ec;opacity:.2}.ambient.two{background:#8ed8c2;opacity:.2}
+    #particles{opacity:.14}
+    .navbar{background:rgba(255,255,255,.88);border-color:rgba(92,111,141,.17);box-shadow:0 12px 35px rgba(34,49,73,.08)}
+    .brand small{color:#648176}
+    .nav-links a{color:#566276}
+    .nav-links a:hover,.nav-links a.active{color:#187b68;text-shadow:none}
+    .nav-cta,.btn{border:1px solid #247d6d;color:white;background:linear-gradient(135deg,#278d79,#3978bd);box-shadow:0 8px 20px rgba(43,119,145,.16)}
+    .nav-cta:hover,.btn:hover{box-shadow:0 12px 25px rgba(43,119,145,.22)}
+    .menu-toggle{color:#287d70}
+    .eyebrow{color:#397b70;border-color:#d7e6e3;background:rgba(255,255,255,.75)}
+    .pulse{background:#2d9a7d;box-shadow:0 0 10px rgba(45,154,125,.4)}
+    .gradient-text{background:linear-gradient(90deg,#2d6fae 8%,#218c7b 60%,#7564b5);-webkit-background-clip:text;background-clip:text}
+    .typed-line{color:#347b91}
+    .cursor{background:#347b91}
+    .hero-desc,.section-subtitle,.about-main p,.timeline-card p,.project-content p,.service p,.contact-info>p{color:#687487}
+    .hero-meta .meta-item i{color:#398b83}
+    .orbit{border-color:rgba(67,133,159,.2);box-shadow:0 0 45px rgba(67,133,159,.05)}
+    .orbit:before,.orbit:after{background:#438e9b;box-shadow:0 0 15px rgba(67,142,155,.4)}
+    .logo-stage{border-color:rgba(83,123,160,.2);background:linear-gradient(145deg,rgba(255,255,255,.94),rgba(233,241,249,.82));box-shadow:0 25px 65px rgba(42,61,88,.12),inset 0 0 35px rgba(82,129,165,.05)}
+    .logo-stage:before{background:linear-gradient(135deg,rgba(70,139,166,.4),transparent 45%,rgba(119,105,183,.25))}
+    .logo-stage img{filter:drop-shadow(0 8px 18px rgba(54,77,105,.12))}
+    .float-chip{background:rgba(255,255,255,.94);border-color:#dce5ee;color:#3e6e7c;box-shadow:0 8px 25px rgba(42,61,88,.1)}
+    .terminal{background:#202938;border:1px solid #354256;color:#d8e1ee;box-shadow:0 16px 38px rgba(27,39,57,.22);padding:0;overflow:hidden;width:310px;border-radius:13px}
+    .terminal b{color:#8cc8b9}
+    .vscode-titlebar{height:23px;background:#182231;border-bottom:1px solid #354256;display:flex;align-items:center;gap:6px;padding:0 11px}
+    .vscode-dot{width:7px;height:7px;border-radius:50%;background:#e6a16f}
+    .vscode-dot:nth-child(2){background:#e6c36f}.vscode-dot:nth-child(3){background:#7fbd9d}
+    .vscode-file{margin-left:auto;color:#aab8ca;font:10px monospace}
+    .vscode-code{padding:10px 13px 12px;font:10px/1.9 Consolas,monospace;text-align:left;white-space:nowrap}
+    .line-no{display:inline-block;width:22px;color:#68788f;user-select:none}
+    .code-purple{color:#c6a0e8}.code-yellow{color:#e6c58b}.code-blue{color:#8dc8e8}.code-green{color:#a5d6a7}.code-caret{color:#d5b7f2;animation:blink .8s steps(2) infinite}
+    section{scroll-margin-top:100px}
+    .section-kicker{color:#39877b}
+    .glass{background:rgba(255,255,255,.86);border:1px solid rgba(101,121,151,.16);backdrop-filter:blur(14px);box-shadow:0 12px 35px rgba(36,53,78,.055)}
+    .glass:hover{border-color:rgba(55,133,129,.35);box-shadow:0 17px 38px rgba(36,53,78,.09)}
+    .trait i,.stat strong{color:#39877b}
+    .about-logo span{color:#648176}
+    .skill-group h3 i{color:#547e9c}
+    .skill{background:#f7f9fc;border:1px solid #e4e9f0;color:#354256;font-size:13px;padding:10px 13px}
+    .skill i{font-size:23px;color:var(--skill-color,#5d83a5)}
+    .skill:nth-child(1) i{--skill-color:#e45d35}
+    .skill:nth-child(2) i{--skill-color:#2878b9}
+    .skill:nth-child(3) i{--skill-color:#d7a52c}
+    .skill:nth-child(4) i{--skill-color:#7655a5}
+    .skill-group:nth-child(2) .skill:nth-child(1) i{--skill-color:#3478a8}
+    .skill-group:nth-child(2) .skill:nth-child(2) i{--skill-color:#687b8e}
+    .skill-group:nth-child(2) .skill:nth-child(3) i{--skill-color:#777bb4}
+    .skill-group:nth-child(4) .skill i{--skill-color:#2879a8}
+    .skill-group:nth-child(5) .skill i{--skill-color:#8b70bd}
+    .skill-group:nth-child(6) .skill i{--skill-color:#647d9a}
+    .skill:hover{border-color:#91c7bb;box-shadow:0 7px 18px rgba(46,119,113,.09)}
+    .timeline:before{background:linear-gradient(#4b9b8a,rgba(75,155,138,.08))}
+    .timeline-dot{background:#fff;border-color:#4b9b8a;box-shadow:0 0 12px rgba(75,155,138,.2)}
+    .timeline-card .date{color:#347d70;background:#e9f4f1}
+    .tag{color:#557c7b;border-color:#dce9e6}
+    .project-visual{background:linear-gradient(135deg,#e8eef6,#e6f3ef)}
+    .project-visual:before{background:linear-gradient(rgba(84,111,145,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(84,111,145,.06) 1px,transparent 1px)}
+    .project-image{height:260px;display:block;background:#e9eef5;position:relative}
+    .project-image img{width:100%;height:100%;object-fit:cover;display:block;position:relative;z-index:1}
+    .image-hint{position:absolute;bottom:10px;right:12px;z-index:0;color:#66758a;font-size:11px}
+    .project-link{color:#287d70}
+    .service-icon{color:#347e80;background:#edf5f4;border-color:#dcebe8}
+    .contact-row{border-top-color:#e8edf3}
+    .contact-icon{color:#347e80;background:#edf5f4}
+    .contact-row small,.contact-row strong{color:#657286}
+    .copy-btn{color:#397f78}
+    .field label{color:#657286}
+    .field input,.field textarea{background:#f9fbfd;border-color:#dce3ec;color:#253246}
+    .field input:focus,.field textarea:focus{border-color:#6ba99e;box-shadow:0 0 0 3px rgba(74,151,137,.1)}
+    .form-status{color:#347e70}
+    footer{background:rgba(255,255,255,.72);border-top-color:#e2e8f0}
+    .back-top{background:#fff;border-color:#dce5ed;color:#347e78;box-shadow:0 8px 22px rgba(34,49,73,.1)}
+    .nav-links a:hover,.nav-links a.active{color:#187b68}
+    .certificates-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .certificate-card{padding:20px;display:flex;align-items:center;gap:15px;min-width:0}
+    .certificate-icon{width:52px;height:52px;flex:0 0 52px;border-radius:15px;display:grid;place-items:center;font-size:22px}
+    .certificate-icon.harvard{color:#a53d4a;background:#f9edef}
+    .certificate-icon.yasan{color:#3479aa;background:#edf4fb}
+    .certificate-icon.language{color:#8265b5;background:#f2effa}
+    .certificate-card>div{min-width:0}
+    .certificate-source{font-size:10px;color:#78869a;display:block;margin-bottom:4px}
+    .certificate-card h3{font-size:14px;line-height:1.8}
+    .certificate-card p{font-size:11px;color:#778397;margin-top:3px}
+    .certificate-mark{margin-right:auto;color:#a34d59;font:700 12px monospace;white-space:nowrap}
+    .level-badge{margin-right:auto;background:#eeeafa;color:#765da9;border-radius:9px;padding:5px 10px;font-weight:800;font-size:12px}
+    .certificates-note{text-align:center;color:#8290a2;font-size:11px;margin-top:18px}
+    @media(max-width:780px){
+      .nav-links{background:rgba(255,255,255,.98);border-color:#dce5ed}
+      .nav-links a{border-bottom-color:#edf0f4}
+      .certificates-grid{grid-template-columns:1fr}
+      .project-image{height:220px}
+      .terminal{width:min(310px,82vw)}
+    }
+    @media(max-width:560px){
+      .terminal{width:min(275px,82vw)}
+      .vscode-code{font-size:9px}
+      .certificate-card{padding:16px;gap:12px}
+      .certificate-icon{width:45px;height:45px;flex-basis:45px;font-size:19px}
+      .certificate-card h3{font-size:13px}
+      .project-image{height:190px}
+    }
+
+
+    /* ===== FINAL DARK / FRIENDLY / RESPONSIVE DESIGN ===== */
+    :root{
+      color-scheme:dark;
+      --bg:#080b16;
+      --bg2:#0d1222;
+      --panel:rgba(19,27,46,.88);
+      --green:#7c8cff;
+      --green2:#6575ed;
+      --emerald:#35c6c2;
+      --soft:#aeb8ff;
+      --text:#f2f4ff;
+      --muted:#a0abc2;
+      --border:rgba(151,166,255,.17);
+      --glow:0 16px 42px rgba(0,0,0,.28);
+      --radius:23px;
+      --blue:#55b8ee;
+      --violet:#a78bfa;
+    }
+    body{background:var(--bg);color:var(--text)}
+    body:before{
+      background:
+        radial-gradient(ellipse at 12% 8%,rgba(91,108,255,.19),transparent 34%),
+        radial-gradient(ellipse at 88% 38%,rgba(42,194,190,.12),transparent 33%),
+        radial-gradient(ellipse at 55% 100%,rgba(139,92,246,.10),transparent 38%),
+        linear-gradient(145deg,#080b16,#0c1222 58%,#090d19)
+    }
+    body:after{
+      opacity:.24;
+      background-image:linear-gradient(rgba(143,158,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(143,158,255,.07) 1px,transparent 1px);
+      mask-image:linear-gradient(to bottom,black,transparent 82%)
+    }
+    ::selection{background:#8b9aff;color:#080b16}
+    .ambient.one{background:#6678ff;opacity:.2}
+    .ambient.two{background:#27c7c0;opacity:.14}
+    #particles{opacity:.25}
+    .navbar{
+      background:rgba(13,18,34,.84);
+      border-color:rgba(151,166,255,.2);
+      box-shadow:0 14px 42px rgba(0,0,0,.28)
+    }
+    .brand small{color:#9eabe0}
+    .nav-links a{color:#b5bfd5}
+    .nav-links a:hover,.nav-links a.active{color:#9ba8ff;text-shadow:0 0 18px rgba(124,140,255,.28)}
+    .nav-cta,.btn{
+      color:#fff;border:1px solid rgba(164,174,255,.38);
+      background:linear-gradient(120deg,#6575ed,#8270d8 58%,#368eaa);
+      box-shadow:0 9px 26px rgba(91,105,226,.22)
+    }
+    .nav-cta:hover,.btn:hover{box-shadow:0 13px 32px rgba(91,105,226,.32)}
+    .btn.secondary{color:#e6eaff;background:rgba(25,34,57,.8);border-color:rgba(151,166,255,.25)}
+    .menu-toggle{color:#aab5ff;border-color:var(--border)}
+    .eyebrow{color:#b9c3ff;border-color:rgba(151,166,255,.25);background:rgba(92,107,220,.10)}
+    .pulse{background:#4ed6c7;box-shadow:0 0 12px rgba(78,214,199,.65)}
+    .gradient-text{
+      background:linear-gradient(100deg,#8ca2ff 5%,#55d1cf 52%,#c0a1ff 96%);
+      -webkit-background-clip:text;background-clip:text;color:transparent
+    }
+    .typed-line{color:#65d1d0}
+    .cursor{background:#65d1d0}
+    .hero-desc,.section-subtitle,.about-main p,.timeline-card p,.project-content p,.service p,.contact-info>p{color:#a4afc5}
+    .hero-meta .meta-item i{color:#9daaff}
+    .orbit{border-color:rgba(132,151,255,.25);box-shadow:0 0 48px rgba(91,108,255,.08)}
+    .orbit:before,.orbit:after{background:#5bd1cf;box-shadow:0 0 16px rgba(91,209,207,.55)}
+    .logo-stage{
+      border-color:rgba(151,166,255,.24);
+      background:linear-gradient(145deg,rgba(27,38,65,.9),rgba(14,21,39,.82));
+      box-shadow:0 28px 75px rgba(0,0,0,.38),inset 0 0 38px rgba(117,133,255,.07)
+    }
+    .logo-stage:before{background:linear-gradient(135deg,rgba(118,139,255,.65),transparent 42%,rgba(65,203,198,.38))}
+    .logo-stage img{filter:drop-shadow(0 9px 22px rgba(0,0,0,.32))}
+    .float-chip{
+      background:rgba(19,28,49,.94);border-color:rgba(151,166,255,.24);
+      color:#c5ceff;box-shadow:0 9px 26px rgba(0,0,0,.24)
+    }
+    .terminal{
+      background:#111827;border:1px solid #34415c;color:#dce5f6;
+      box-shadow:0 18px 45px rgba(0,0,0,.42)
+    }
+    .terminal b{color:#65d1cf}
+    .vscode-titlebar{background:#151e30;border-bottom-color:#34415c}
+    .vscode-file{color:#b7c3da}
+    .code-purple{color:#c5a3ff}.code-yellow{color:#f1cb8b}
+    .code-blue{color:#8dcaff}.code-green{color:#a5e3b2}
+    .section-kicker{color:#75d8d1}
+    .glass{
+      background:linear-gradient(145deg,rgba(22,31,53,.92),rgba(15,23,41,.88));
+      border:1px solid rgba(145,161,220,.16);
+      backdrop-filter:blur(16px);
+      box-shadow:0 16px 42px rgba(0,0,0,.19);
+      transition:transform .3s,border-color .3s,box-shadow .3s
+    }
+    .glass:hover{
+      border-color:rgba(125,148,255,.4);
+      box-shadow:0 20px 48px rgba(0,0,0,.28),0 0 24px rgba(111,130,255,.07)
+    }
+    .trait i,.stat strong{color:#7edbd4}
+    .about-logo span{color:#9fadd0}
+    .skill-group h3 i{color:#9eafff}
+    .skill{background:rgba(9,15,29,.72);border-color:rgba(145,161,220,.15);color:#e0e7f7}
+    .skill:hover{border-color:#8495ff;box-shadow:0 8px 22px rgba(99,115,225,.14)}
+    .timeline:before{background:linear-gradient(#7d8fff,rgba(125,143,255,.05))}
+    .timeline-dot{background:#111a2c;border-color:#8495ff;box-shadow:0 0 15px rgba(125,143,255,.3)}
+    .timeline-card .date{color:#8ee0d8;background:rgba(57,183,174,.12)}
+    .tag{color:#aab9e5;border-color:rgba(145,161,220,.2);background:rgba(117,135,218,.06)}
+    .project-visual{background:linear-gradient(135deg,#1b2945,#142b35)}
+    .project-visual:before{background:linear-gradient(rgba(143,158,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(143,158,255,.07) 1px,transparent 1px)}
+    .project-image{background:#111a2b}
+    .image-hint{color:#b4c0d8}
+    .project-link{color:#7edbd4}
+    .service-icon,.contact-icon{color:#8de0dc;background:rgba(52,177,174,.1);border-color:rgba(90,203,196,.2)}
+    .contact-row{border-top-color:rgba(145,161,220,.13)}
+    .contact-row small,.contact-row strong{color:#b0bad0}
+    .copy-btn{color:#9cafff}
+    .field label{color:#aeb9d0}
+    .field input,.field textarea{background:#0c1425;border-color:#34415c;color:#eef2ff}
+    .field input:focus,.field textarea:focus{border-color:#8293ff;box-shadow:0 0 0 3px rgba(124,140,255,.12)}
+    .form-status{color:#83ddd5}
+    footer{background:rgba(9,14,26,.72);border-top-color:rgba(145,161,220,.15)}
+    .back-top{background:#151f34;border-color:rgba(145,161,220,.25);color:#aab7ff;box-shadow:0 9px 24px rgba(0,0,0,.28)}
+    .certificates-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .certificate-icon.harvard{color:#ff9aa8;background:rgba(190,65,88,.14)}
+    .certificate-icon.yasan{color:#75c5ff;background:rgba(64,139,205,.14)}
+    .certificate-icon.language{color:#c0a4ff;background:rgba(139,105,211,.15)}
+    .certificate-source{color:#9ba9c5}
+    .certificate-card p{color:#a3afc6}
+    .certificate-mark{color:#ff9aa8}
+    .level-badge{background:rgba(139,105,211,.17);color:#c7b2ff}
+    .certificates-note{color:#8795b2}
+
+    /* Three hero highlights: distinct, legible cards */
+    .hero-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin-top:30px}
+    .meta-item{
+      min-width:0;min-height:76px;padding:13px 12px;
+      border:1px solid rgba(145,161,220,.17);border-radius:16px;
+      background:linear-gradient(145deg,rgba(29,41,68,.9),rgba(17,26,46,.82));
+      color:#d4def2;font-size:11px;line-height:1.8;
+      display:flex;align-items:center;gap:10px;
+      box-shadow:0 9px 24px rgba(0,0,0,.16)
+    }
+    .meta-item:nth-child(1){border-color:rgba(103,150,255,.28)}
+    .meta-item:nth-child(2){border-color:rgba(75,202,190,.25)}
+    .meta-item:nth-child(3){border-color:rgba(177,130,255,.26)}
+    .meta-item i{
+      width:37px;height:37px;flex:0 0 37px;display:grid;place-items:center;
+      border-radius:12px;background:rgba(124,140,255,.13);
+      color:#aab6ff;font-size:16px;margin:0
+    }
+    .meta-item:nth-child(2) i{background:rgba(75,202,190,.12);color:#72ded2}
+    .meta-item:nth-child(3) i{background:rgba(177,130,255,.13);color:#c2a3ff}
+
+    /* Project gallery becomes a touch-friendly horizontal rail */
+    .projects-grid{
+      display:flex;gap:20px;overflow-x:auto;overflow-y:hidden;
+      padding:5px 3px 18px;scroll-snap-type:x mandatory;
+      scroll-padding-inline:3px;overscroll-behavior-inline:contain;
+      scrollbar-width:thin;scrollbar-color:#596a9d rgba(255,255,255,.05)
+    }
+    .projects-grid::-webkit-scrollbar{height:7px}
+    .projects-grid::-webkit-scrollbar-track{background:rgba(255,255,255,.05);border-radius:20px}
+    .projects-grid::-webkit-scrollbar-thumb{background:#596a9d;border-radius:20px}
+    .project-card{flex:0 0 min(520px,calc(50% - 10px));scroll-snap-align:start}
+    .project-image{height:250px}
+
+    @media(max-width:780px){
+      .nav-links{background:rgba(13,20,37,.98);border-color:rgba(145,161,220,.2)}
+      .nav-links a{color:#d0d9ec;border-bottom-color:rgba(145,161,220,.12)}
+      .certificates-grid{grid-template-columns:1fr}
+      .project-card{flex-basis:min(82vw,440px)}
+      .project-image{height:220px}
+      .hero-meta{grid-template-columns:repeat(3,minmax(0,1fr))}
+      .meta-item{flex-direction:column;justify-content:center;text-align:center;gap:7px;padding:12px 8px;font-size:10px}
+      .meta-item i{width:35px;height:35px;flex-basis:35px}
+    }
+    @media(max-width:560px){
+      .nav-wrap{top:8px}
+      .navbar{background:rgba(12,18,33,.94);border-radius:17px}
+      .hero{padding-top:102px;gap:9px}
+      .hero-visual{min-height:390px;padding-bottom:0;overflow:visible}
+      .logo-stage{
+        width:min(290px,76vw);height:205px;border-radius:23px;
+        transform:translateY(-53px);animation:none
+      }
+      .logo-stage img{width:80%;max-height:155px}
+      .orbit{width:min(245px,68vw);height:min(245px,68vw)}
+      .float-chip{font-size:9px;padding:6px 8px}
+      .chip-html{top:30px;right:0}.chip-js{top:55px;left:0}.chip-python{bottom:140px;left:0}
+      .terminal{
+        width:min(218px,66vw);height: 120px; bottom:47px;z-index:3;
+        border-radius:11px
+      }
+      .vscode-titlebar{height:24px;padding:0 8px}
+      .vscode-dot{width:6px;height:6px}
+      .vscode-file{font-size:8px}
+      .vscode-code{font-size:8.2px;line-height:1.92;padding:7px 9px 8px}
+      .line-no{width:17px}
+      .hero-copy{position:relative;z-index:1}
+      .hero-meta{
+        display:flex;width:100%;max-width:100%;gap:9px;
+        margin:22px auto 0;padding:3px 1px 10px;
+        overflow-x:auto;overflow-y:hidden;
+        scroll-snap-type:x mandatory;scrollbar-width:thin;
+        scrollbar-color:#596a9d transparent
+      }
+      .meta-item{
+        min-height:78px;flex-direction:row;
+        justify-content:flex-start;text-align:right;gap:10px;
+        padding:11px 12px;font-size:10px
+      }
+      .meta-item i{width:35px;height:35px;flex-basis:35px}
+      .projects-grid{gap:13px;padding-bottom:15px}
+      .project-card{flex-basis:86vw}
+      .project-image{height:190px}
+      .section-head{margin-bottom:28px}
+      .glass{border-radius:19px}
+    }
+    @media(max-width:360px){
+      .hero-visual{min-height:365px}
+      .logo-stage{width:260px;height:188px;transform:translateY(-48px)}
+      .terminal{width:205px}
+      .vscode-code{font-size:7px}
+      .meta-item{flex-basis:178px}
+      .project-card{flex-basis:88vw}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .logo-stage,.orbit,.float-chip{animation:none!important}
+      .projects-grid{scroll-behavior:auto}
+    }
+
+  </style>
+</head>
+<body>
+  <div class="ambient one"></div><div class="ambient two"></div><canvas id="particles" aria-hidden="true"></canvas>
+  <div class="nav-wrap"><nav class="navbar" aria-label="ناوبری اصلی">
+    <a class="brand" href="#home" aria-label="صفحه اصلی">
+      <span style="margin-right: 10px;">ایلیا رستمی<small>توسعه‌دهنده وب</small></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#home" class="active">خانه</a><a href="#about">درباره من</a><a href="#skills">مهارت‌ها</a><a href="#experience">سوابق کاری</a><a href="#projects">پروژه‌ها</a><a href="#certificates">مدارک و تحصیلات</a><a href="#services">خدمات</a><a href="#contact">تماس با من</a>
+    </div>
+    <a class="nav-cta" href="#contact">شروع همکاری <i class="fa-solid fa-arrow-left"></i></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="باز کردن منو" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+  </nav></div>
+
+  <main>
+    <div class="container hero" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse"></span> آماده یادگیری، ساختن و خلق ایده‌های تازه</div>
+        <h1>سلام، من <span class="gradient-text">ایلیا رستمی</span> هستم</h1>
+        <div class="typed-line"><span id="typed"></span><span class="cursor"></span></div>
+        <p class="hero-desc">ایده‌ها را با خلاقیت و کدنویسی به تجربه‌های دیجیتال مدرن تبدیل می‌کنم. به ساخت وب‌سایت‌های کاربردی، حل مسائل فنی و کشف فرصت‌های تازه در دنیای هوش مصنوعی علاقه دارم.</p>
+        <div class="hero-actions"><a class="btn" href="#projects">مشاهده پروژه‌ها <i class="fa-solid fa-arrow-left"></i></a><a class="btn secondary" href="#contact">ارتباط با من <i class="fa-regular fa-paper-plane"></i></a></div>
+        <div class="hero-meta"><div class="meta-item"><i class="fa-solid fa-code"></i><span>۳ سال تجربه فعالیت</span></div><div class="meta-item"><i class="fa-solid fa-laptop-code"></i><span>توسعه وب و طراحی دیجیتال</span></div><div class="meta-item"><i class="fa-solid fa-brain"></i><span>علاقه‌مند به هوش مصنوعی</span></div></div>
+      </div>
+      <div class="hero-visual" aria-label="نمایش لوگوی شخصی">
+        <div class="orbit"></div><div class="logo-stage"><img src="eilia.webp" alt="لوگوی رسمی ایلیا رستمی"></div>
+        <span class="float-chip chip-html"><i class="fa-brands fa-html5"></i> HTML5</span><span class="float-chip chip-js"><i class="fa-brands fa-js"></i> JavaScript</span><span class="float-chip chip-python"><i class="fa-brands fa-python"></i> Python</span>
+        <div class="terminal vscode-window" aria-label="نمایی از کدنویسی در محیطی شبیه VS Code">
+          <div class="vscode-titlebar"><span class="vscode-dot"></span><span class="vscode-dot"></span><span class="vscode-dot"></span><span class="vscode-file">✦ portfolio.py</span></div>
+          <div class="vscode-code" dir="ltr">
+            <div><span class="line-no">1</span><span class="code-purple">class</span> <span class="code-yellow">Developer</span>:</div>
+            <div><span class="line-no">2</span>&nbsp;&nbsp;<span class="code-blue">name</span> = <span class="code-green">"Eilia Rostami"</span></div>
+            <div><span class="line-no">3</span>&nbsp;&nbsp;<span class="code-blue">focus</span> = <span class="code-green">"Web Development"</span></div>
+            <div><span class="line-no">4</span>&nbsp;&nbsp;<span class="code-purple">def</span> <span class="code-yellow">create</span>(self):</div>
+            <div><span class="line-no">5</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-purple">return</span> <span class="code-green">"Ideas into reality"</span><span class="code-caret">▍</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="about"><div class="container">
+      <div class="section-head reveal"><span class="section-kicker">درباره من</span><h2 class="section-title">فراتر از کدنویسی، خلق تجربه‌های متفاوت</h2><p class="section-subtitle">ترکیبی از کنجکاوی، منطق و خلاقیت برای ساخت راهکارهای دیجیتال بهتر.</p></div>
+      <div class="about-grid">
+        <div class="glass about-main reveal"><div class="about-logo"><img src="eilia.webp" alt="لوگوی ایلیا رستمی"><span>هویت شخصی من؛ امضای من در دنیای دیجیتال</span></div><h3>سلام! خوشحالم که اینجا هستی.</h3><p>من ایلیا رستمی هستم؛ توسعه‌دهنده وب و علاقه‌مند به دنیای فناوری، طراحی خلاقانه و هوش مصنوعی. در طول سه سال فعالیت خود در زمینه طراحی و توسعه وب‌سایت، تلاش کرده‌ام ایده‌ها را به تجربه‌های دیجیتال مدرن، کاربردی و زیبا تبدیل کنم. به یادگیری مداوم، حل مسائل فنی و ساخت پروژه‌های خلاقانه علاقه دارم. برای من هر پروژه فرصتی است تا چیزی تازه یاد بگیرم، جزئیات را بهتر کنم و تجربه‌ای ارزشمندتر بسازم.</p></div>
+        <div class="traits">
+          <div class="glass trait reveal"><i class="fa-solid fa-lightbulb"></i><strong>خلاق و نوآور</strong><small>نگاه متفاوت به ایده‌ها و راهکارها</small></div>
+          <div class="glass trait reveal"><i class="fa-solid fa-graduation-cap"></i><strong>یادگیری مداوم</strong><small>دنبال‌کردن فناوری‌های تازه</small></div>
+          <div class="glass trait reveal"><i class="fa-solid fa-puzzle-piece"></i><strong>حل مسئله</strong><small>تفکر تحلیلی و عیب‌یابی دقیق</small></div>
+          <div class="glass trait reveal"><i class="fa-solid fa-wand-magic-sparkles"></i><strong>توجه به جزئیات</strong><small>اهمیت به تجربه و کیفیت طراحی</small></div>
+        </div>
+      </div>
+      <div class="stats"><div class="glass stat reveal"><strong>۱۶</strong><span>سال سن</span></div><div class="glass stat reveal"><strong>۳+</strong><span>سال فعالیت</span></div><div class="glass stat reveal"><strong>وب</strong><span>حوزه تخصصی</span></div><div class="glass stat reveal"><strong>AI</strong><span>حوزه مورد علاقه</span></div></div>
+    </div></section>
+
+    <section id="skills"><div class="container">
+      <div class="section-head reveal"><span class="section-kicker">جعبه ابزار من</span><h2 class="section-title">مهارت‌ها و فناوری‌هایی که با آن‌ها کار می‌کنم</h2><p class="section-subtitle">فناوری‌هایی که در مسیر یادگیری و توسعه پروژه‌ها از آن‌ها استفاده می‌کنم.</p></div>
+      <div class="skills-grid">
+        <div class="glass skill-group reveal"><h3><i class="fa-solid fa-laptop-code"></i> فرانت‌اند</h3><div class="skill-list"><span class="skill"><i class="fa-brands fa-html5"></i> HTML5</span><span class="skill"><i class="fa-brands fa-css3-alt"></i> CSS3</span><span class="skill"><i class="fa-brands fa-js"></i> JavaScript</span><span class="skill"><i class="fa-brands fa-bootstrap"></i> Bootstrap</span></div></div>
+        <div class="glass skill-group reveal"><h3><i class="fa-solid fa-server"></i> بک‌اند</h3><div class="skill-list"><span class="skill"><i class="fa-brands fa-python"></i> Python</span><span class="skill"><i class="fa-solid fa-flask"></i> Flask</span><span class="skill"><i class="fa-brands fa-php"></i> PHP</span></div></div>
+        <div class="glass skill-group reveal"><h3><i class="fa-solid fa-database"></i> پایگاه داده</h3><div class="skill-list"><span class="skill"><i class="fa-solid fa-database"></i> SQLite</span></div></div>
+        <div class="glass skill-group reveal"><h3><i class="fa-brands fa-wordpress"></i> سیستم‌های مدیریت محتوا</h3><div class="skill-list"><span class="skill"><i class="fa-brands fa-wordpress"></i> WordPress</span><span class="skill"><i class="fa-solid fa-cart-shopping"></i> WooCommerce</span></div></div>
+        <div class="glass skill-group reveal"><h3><i class="fa-solid fa-brain"></i> فناوری‌های هوشمند</h3><div class="skill-list"><span class="skill"><i class="fa-solid fa-robot"></i> Artificial Intelligence</span><span class="skill"><i class="fa-solid fa-code-branch"></i> Debugging</span></div></div>
+        <div class="glass skill-group reveal"><h3><i class="fa-solid fa-screwdriver-wrench"></i> ابزارها و بهینه‌سازی</h3><div class="skill-list"><span class="skill"><i class="fa-solid fa-mobile-screen"></i> Responsive Design</span><span class="skill"><i class="fa-solid fa-gauge-high"></i> Optimization</span><span class="skill"><i class="fa-brands fa-git-alt"></i> Git</span><span class="skill"><i class="fa-brands fa-github"></i> GitHub</span><span class="skill"><i class="fa-solid fa-magnifying-glass-chart"></i> Technical SEO</span></div></div>
+      </div>
+    </div></section>
+
+    <section id="experience"><div class="container">
+      <div class="section-head reveal"><span class="section-kicker">مسیر حرفه‌ای</span><h2 class="section-title">مسیر حرفه‌ای من</h2><p class="section-subtitle">تجربه‌هایی که در مسیر توسعه وب و مدیریت وب‌سایت به دست آورده‌ام.</p></div>
+      <div class="timeline">
+        <div class="timeline-item reveal"><span class="timeline-dot"></span><div class="glass timeline-card"><div class="timeline-top"><h3>توسعه‌دهنده وب مستقل</h3><span class="date">۳ سال فعالیت</span></div><p>فعالیت در زمینه طراحی و توسعه وب‌سایت‌های مدرن، پیاده‌سازی رابط کاربری، توسعه قابلیت‌های Frontend، بهینه‌سازی عملکرد وب‌سایت و رفع مشکلات فنی.</p><div class="tag-row"><span class="tag">HTML & CSS</span><span class="tag">JavaScript</span><span class="tag">Python</span><span class="tag">طراحی واکنش‌گرا</span></div></div></div>
+        <div class="timeline-item reveal"><span class="timeline-dot"></span><div class="glass timeline-card"><div class="timeline-top"><h3>کارافام | Karafam</h3><span class="date">مدیریت وب‌سایت و SEO</span></div><p>فعالیت در زمینه مدیریت و نگهداری وب‌سایت کارافام، بهینه‌سازی ساختار سئو، بررسی و رفع مشکلات فنی، دیباگ و عیب‌یابی، بهبود عملکرد صفحات، مدیریت WordPress و ارتقای تجربه کاربری.</p><div class="tag-row"><span class="tag">WordPress</span><span class="tag">Technical SEO</span><span class="tag">Debugging</span><span class="tag">بهینه‌سازی محتوا</span></div></div></div>
+      </div>
+    </div></section>
+
+    <section id="projects"><div class="container">
+      <div class="section-head reveal"><span class="section-kicker">نمونه‌کارها</span><h2 class="section-title">پروژه‌هایی که روی آن‌ها کار کرده‌ام</h2><p class="section-subtitle">چند نمونه از تجربه‌های من در طراحی، توسعه و مدیریت وب‌سایت.</p></div>
+      <div class="projects-grid">
+        <article class="glass project-card reveal"><div class="project-visual project-image"><img src="dane.webp" alt="تصویر صفحه اصلی فروشگاه دانه" loading="lazy"><span class="image-hint">تصویر پروژه: images/daneproducts.jpg</span></div><div class="project-content"><h3>فروشگاه اینترنتی دانه | Dane Products</h3><p>طراحی و توسعه یک وب‌سایت فروشگاهی برای برند دانه با تمرکز بر تجربه خرید آسان، طراحی رابط کاربری مدرن و نمایش حرفه‌ای محصولات.</p><div class="project-features"><span class="tag">WooCommerce</span><span class="tag">طراحی واکنش‌گرا</span><span class="tag">تجربه کاربری</span><span class="tag">بهینه‌سازی</span></div><a class="project-link" href="https://daneproducts.com/" target="_blank" rel="noopener noreferrer">مشاهده وب‌سایت <i class="fa-solid fa-arrow-up-left-from-square"></i></a></div></article>
+        <article class="glass project-card reveal"><div class="project-visual project-image"><img src="karafam.webp" alt="تصویر صفحه اصلی وب‌سایت کارافام" loading="lazy"><span class="image-hint">تصویر پروژه: images/karafam.jpg</span></div><div class="project-content"><h3>کارافام | Karafam</h3><p>فعالیت در زمینه مدیریت فنی وب‌سایت کارافام، بهینه‌سازی ساختار صفحات، رفع مشکلات فنی و بهبود وضعیت سئو و تجربه کاربری.</p><div class="project-features"><span class="tag">WordPress</span><span class="tag">SEO</span><span class="tag">مدیریت محتوا</span><span class="tag">نگهداری</span></div><a class="project-link" href="https://karafam.com/" target="_blank" rel="noopener noreferrer">مشاهده وب‌سایت <i class="fa-solid fa-arrow-up-left-from-square"></i></a></div></article>
+      </div>
+    </div></section>
+
+
+    <section id="certificates"><div class="container">
+      <div class="section-head reveal"><span class="section-kicker">آموزش و دستاوردها</span><h2 class="section-title">مدارک و مسیر یادگیری</h2><p class="section-subtitle">دوره‌ها و گواهی‌هایی که در مسیر یادگیری برنامه‌نویسی و فناوری گذرانده‌ام.</p></div>
+      <div class="certificates-grid">
+        <article class="glass certificate-card reveal"><span class="certificate-icon harvard"><i class="fa-solid fa-graduation-cap"></i></span><div><span class="certificate-source">Harvard University · CS50</span><h3>مبانی برنامه‌نویسی با Python</h3><p>گواهی دوره CS50 Python</p></div><span class="certificate-mark">CS50</span></article>
+        <article class="glass certificate-card reveal"><span class="certificate-icon harvard"><i class="fa-solid fa-code"></i></span><div><span class="certificate-source">Harvard University · CS50</span><h3>توسعه وب</h3><p>گواهی دوره CS50 Web</p></div><span class="certificate-mark">CS50</span></article>
+        <article class="glass certificate-card reveal"><span class="certificate-icon harvard"><i class="fa-solid fa-brain"></i></span><div><span class="certificate-source">Harvard University · CS50</span><h3>هوش مصنوعی</h3><p>گواهی دوره CS50 AI</p></div><span class="certificate-mark">CS50</span></article>
+        <article class="glass certificate-card reveal"><span class="certificate-icon harvard"><i class="fa-solid fa-laptop-code"></i></span><div><span class="certificate-source">Harvard University · CS50</span><h3>مبانی علوم کامپیوتر</h3><p>گواهی دوره CS50</p></div><span class="certificate-mark">CS50</span></article>
+        <article class="glass certificate-card reveal"><span class="certificate-icon yasan"><i class="fa-brands fa-python"></i></span><div><span class="certificate-source">آکادمی یاسان</span><h3>برنامه‌نویسی Python</h3><p>گواهی آموزش پایتون</p></div><span class="certificate-mark">Python</span></article>
+        <article class="glass certificate-card language-card reveal"><span class="certificate-icon language"><i class="fa-solid fa-language"></i></span><div><span class="certificate-source">مهارت زبانی</span><h3>زبان انگلیسی</h3><p>سطح مهارت: B2</p></div><span class="level-badge">B2</span></article>
+      </div>
+    </div></section>
+
+    <section id="services"><div class="container">
+      <div class="section-head reveal"><span class="section-kicker">خدمات</span><h2 class="section-title">چه خدماتی ارائه می‌دهم؟</h2><p class="section-subtitle">از شکل‌گیری ایده تا اجرای یک تجربه دیجیتال کاربردی.</p></div>
+      <div class="services-grid">
+        <div class="glass service reveal"><div class="service-icon"><i class="fa-solid fa-code"></i></div><h3>طراحی و توسعه وب‌سایت</h3><p>ساخت وب‌سایت متناسب با نیاز و هویت هر کسب‌وکار.</p></div>
+        <div class="glass service reveal"><div class="service-icon"><i class="fa-solid fa-tablet-screen-button"></i></div><h3>رابط کاربری واکنش‌گرا</h3><p>تجربه‌ای روان و سازگار با موبایل، تبلت و دسکتاپ.</p></div>
+        <div class="glass service reveal"><div class="service-icon"><i class="fa-solid fa-cart-shopping"></i></div><h3>طراحی فروشگاه اینترنتی</h3><p>پیاده‌سازی ساختار فروشگاهی و امکانات خرید آنلاین.</p></div>
+        <div class="glass service reveal"><div class="service-icon"><i class="fa-brands fa-wordpress"></i></div><h3>توسعه با WordPress</h3><p>راه‌اندازی، توسعه و مدیریت وب‌سایت‌های وردپرسی.</p></div>
+        <div class="glass service reveal"><div class="service-icon"><i class="fa-solid fa-gauge-high"></i></div><h3>بهینه‌سازی سرعت</h3><p>بررسی عوامل مؤثر بر عملکرد و سرعت بارگذاری.</p></div>
+        <div class="glass service reveal"><div class="service-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div><h3>سئو تکنیکال</h3><p>بهبود ساختار فنی صفحات و دسترسی موتورهای جست‌وجو.</p></div>
+        <div class="glass service reveal"><div class="service-icon"><i class="fa-solid fa-bug-slash"></i></div><h3>رفع مشکلات فنی</h3><p>عیب‌یابی، بررسی خطاها و اصلاح مشکلات وب‌سایت.</p></div>
+        <div class="glass service reveal"><div class="service-icon"><i class="fa-solid fa-robot"></i></div><h3>قابلیت‌های هوش مصنوعی</h3><p>بررسی و پیاده‌سازی قابلیت‌های هوشمند در محصولات دیجیتال.</p></div>
+      </div>
+    </div></section>
+
+    <section id="contact"><div class="container">
+      <div class="section-head reveal"><span class="section-kicker">ارتباط با من</span><h2 class="section-title">بیایید یک ایده جذاب را به واقعیت تبدیل کنیم!</h2><p class="section-subtitle">اگر برای توسعه وب‌سایت یا اجرای یک ایده دیجیتال به دنبال همکاری هستید، خوشحال می‌شوم با شما در ارتباط باشم.</p></div>
+      <div class="contact-grid">
+        <div class="glass contact-info reveal"><h3>راه‌های ارتباطی</h3><p>برای مطرح‌کردن ایده، پرسیدن سؤال یا شروع یک همکاری می‌توانی از راه‌های زیر با من در ارتباط باشی.</p>
+          <div class="contact-row"><span class="contact-icon"><i class="fa-regular fa-envelope"></i></span><div><small>ایمیل</small><strong dir="ltr">eiliarostami990@gmail.com</strong></div><button class="copy-btn" id="copyEmail" aria-label="کپی ایمیل"><i class="fa-regular fa-copy"></i></button></div>
+          <div class="contact-row"><span class="contact-icon"><i class="fa-solid fa-phone"></i></span><div><small>شماره تماس</small><strong dir="ltr">09102565473</strong></div><a class="copy-btn" href="tel:09102565473" aria-label="تماس تلفنی"><i class="fa-solid fa-arrow-up-left-from-square"></i></a></div>
+          <div class="contact-row"><span class="contact-icon"><i class="fa-solid fa-globe"></i></span><div><small>وب‌سایت شخصی</small><strong dir="ltr">Eilia Rostami</strong></div></div>
+        </div>
+        <form class="glass contact-form reveal" id="contactForm"><h3>ارسال پیام از طریق ایمیل</h3>
+          <div class="field"><label for="name">نام شما</label><input id="name" name="name" required maxlength="80" placeholder="نام و نام خانوادگی"></div>
+          <div class="field"><label for="email">ایمیل شما</label><input id="email" name="email" type="email" required maxlength="120" placeholder="name@example.com" dir="ltr"></div>
+          <div class="field"><label for="message">متن پیام</label><textarea id="message" name="message" required maxlength="2000" placeholder="پیام خود را بنویسید..."></textarea></div>
+          <button class="btn" type="submit">آماده‌سازی ایمیل <i class="fa-regular fa-paper-plane"></i></button>
+          <p class="form-status" id="formStatus" aria-live="polite"></p>
+        </form>
+      </div>
+    </div></section>
+  </main>
+  <footer><div class="container footer-inner"><a class="footer-brand" href="#home"><img src="eilia.webp" alt="لوگوی ایلیا رستمی"><span>طراحی و توسعه با دقت، خلاقیت و علاقه به فناوری</span></a><p class="footer-copy">© <span id="year"></span> ایلیا رستمی — تمامی حقوق محفوظ است.</p></div></footer>
+  <button class="back-top" id="backTop" aria-label="بازگشت به بالای صفحه"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    // منوی واکنش‌گرا
+    const menuToggle=document.getElementById('menuToggle'),navLinks=document.getElementById('navLinks');
+    menuToggle.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');menuToggle.setAttribute('aria-expanded',String(open));menuToggle.innerHTML=open?'<i class="fa-solid fa-xmark"></i>':'<i class="fa-solid fa-bars"></i>';});
+    navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');menuToggle.innerHTML='<i class="fa-solid fa-bars"></i>';}));
+
+    // عنوان تایپ‌شونده
+    const phrases=['توسعه‌دهنده وب','طراح تجربه دیجیتال','علاقه‌مند به هوش مصنوعی'];
+    const typed=document.getElementById('typed');let phraseIndex=0,charIndex=0,deleting=false;
+    function typeEffect(){const phrase=phrases[phraseIndex];typed.textContent=phrase.slice(0,charIndex);if(!deleting&&charIndex<phrase.length){charIndex++;setTimeout(typeEffect,85);}else if(deleting&&charIndex>0){charIndex--;setTimeout(typeEffect,42);}else{deleting=!deleting;if(!deleting)phraseIndex=(phraseIndex+1)%phrases.length;setTimeout(typeEffect,850);}}
+    typeEffect();
+
+    // نمایش تدریجی بخش‌ها
+    const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target);}}),{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+
+    // منوی فعال و دکمه بازگشت به بالا
+    const sections=[...document.querySelectorAll('main section, #home')],navItems=[...navLinks.querySelectorAll('a')],backTop=document.getElementById('backTop');
+    const sectionObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){navItems.forEach(link=>link.classList.toggle('active',link.getAttribute('href')==='#'+entry.target.id));}}),{rootMargin:'-35% 0px -55% 0px'});
+    sections.forEach(section=>sectionObserver.observe(section));
+    window.addEventListener('scroll',()=>backTop.classList.toggle('show',window.scrollY>500),{passive:true});
+    backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+    // کپی ایمیل
+    document.getElementById('copyEmail').addEventListener('click',async()=>{const btn=document.getElementById('copyEmail');try{await navigator.clipboard.writeText('eiliarostami990@gmail.com');btn.innerHTML='<i class="fa-solid fa-check"></i>';}catch{btn.innerHTML='<i class="fa-regular fa-envelope"></i>';window.location.href='mailto:eiliarostami990@gmail.com';}setTimeout(()=>btn.innerHTML='<i class="fa-regular fa-copy"></i>',1800);});
+
+    // فرم بدون بک‌اند؛ باز کردن نرم‌افزار ایمیل به‌جای نمایش ارسال موفق
+    document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();const form=e.currentTarget;if(!form.reportValidity())return;const name=document.getElementById('name').value.trim(),email=document.getElementById('email').value.trim(),message=document.getElementById('message').value.trim();const subject=encodeURIComponent('پیام از وب‌سایت شخصی - '+name);const body=encodeURIComponent('نام: '+name+'\nایمیل: '+email+'\n\n'+message);document.getElementById('formStatus').textContent='برنامه ایمیل در حال باز شدن است؛ ارسال پیام را در آن نهایی کن.';window.location.href='mailto:eiliarostami990@gmail.com?subject='+subject+'&body='+body;});
+    document.getElementById('year').textContent=new Date().getFullYear();
+
+    // ذرات سبز سبک روی بوم؛ با تنظیم کاهش حرکت غیرفعال می‌شود
+    (()=>{const canvas=document.getElementById('particles'),ctx=canvas.getContext('2d');if(!ctx||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;let w,h,particles=[];function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;particles=Array.from({length:Math.min(55,Math.floor(w/25))},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.5+.4,v:Math.random()*.28+.08,a:Math.random()*.45+.15}));}function draw(){ctx.clearRect(0,0,w,h);particles.forEach(p=>{p.y-=p.v;if(p.y<0){p.y=h;p.x=Math.random()*w;}ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(124,140,255,${p.a})`;ctx.fill();});requestAnimationFrame(draw);}resize();addEventListener('resize',resize);draw();})();
+
+    // افکت Tilt ظریف برای کارت‌ها در دستگاه‌های دارای ماوس
+    if(matchMedia('(hover:hover) and (pointer:fine)').matches&&!matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.glass').forEach(card=>{card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(900px) rotateX(${-y*2.5}deg) rotateY(${x*2.5}deg) translateY(-2px)`;});card.addEventListener('mouseleave',()=>card.style.transform='');});}
+  </script>
+</body>
+</html>
