@@ -43,6 +43,9 @@
     .nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:1px solid rgba(0,255,136,.4);border-radius:13px;padding:11px 18px;color:#031009;background:linear-gradient(135deg,var(--green),#65e6ae);font-weight:800;font-size:13px;box-shadow:0 0 25px rgba(0,255,136,.15);transition:.3s}
     .nav-cta:hover,.btn:hover{transform:translateY(-3px);box-shadow:0 0 32px rgba(0,255,136,.3)}
     .menu-toggle{display:none;background:transparent;color:var(--green);border:1px solid var(--border);border-radius:10px;width:42px;height:42px}
+    .nav-actions{display:flex;align-items:center;gap:15px;flex:0 0 auto}
+    .language-toggle{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-width:62px;height:42px;padding:0 11px;border:1px solid var(--border);border-radius:11px;background:rgba(124,140,255,.09);color:#c5ceff;font-size:12px;font-weight:800;transition:.25s}
+    .language-toggle:hover{border-color:rgba(151,166,255,.42);background:rgba(124,140,255,.16)}
     .hero{min-height:100vh;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:55px;padding:145px 0 90px;position:relative}
     .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--soft);border:1px solid var(--border);background:rgba(0,255,136,.045);padding:7px 13px;border-radius:30px;font-size:12px;margin-bottom:22px}
     .pulse{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green);animation:pulse 1.8s infinite}
@@ -212,6 +215,7 @@ button:active {
       .hero-visual{min-height:275px}.logo-stage{height:195px}
       .orbit{width:230px;height:230px}.float-chip{font-size:9px}.terminal{width:215px}
       .stats{gap:8px}.stat span{font-size:10px}
+      
     }
     @media(prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important}}
     /* Improved Hero Meta Items — Mobile */
@@ -306,6 +310,7 @@ button:active {
   #about {
     padding-top: 28px;
   }
+  
     /* Remove default blue click background */
   .navbar a,
   .navbar button,
@@ -324,6 +329,7 @@ button:active {
       box-shadow: none;
       background-color: transparent;
   }
+  
 
 }
 
@@ -485,6 +491,7 @@ button:active {
     .brand small{color:#9eabe0}
     .nav-links a{color:#b5bfd5}
     .nav-links a:hover,.nav-links a.active{color:#9ba8ff;text-shadow:0 0 18px rgba(124,140,255,.28)}
+    .language-toggle{color:#c5ceff;background:rgba(124,140,255,.09);border-color:rgba(151,166,255,.22)}
     .nav-cta,.btn{
       color:#fff;border:1px solid rgba(164,174,255,.38);
       background:linear-gradient(120deg,#6575ed,#8270d8 58%,#368eaa);
@@ -544,6 +551,9 @@ button:active {
     .skill:hover{border-color:#8495ff;box-shadow:0 8px 22px rgba(99,115,225,.14)}
     .timeline:before{background:linear-gradient(#7d8fff,rgba(125,143,255,.05))}
     .timeline-dot{background:#111a2c;border-color:#8495ff;box-shadow:0 0 15px rgba(125,143,255,.3)}
+    html[dir="ltr"] .timeline:before{right:auto;left:15px}
+    html[dir="ltr"] .timeline-item{padding:0 0 30px 55px}
+    html[dir="ltr"] .timeline-dot{right:auto;left:7px}
     .timeline-card .date{color:#8ee0d8;background:rgba(57,183,174,.12)}
     .tag{color:#aab9e5;border-color:rgba(145,161,220,.2);background:rgba(117,135,218,.06)}
     .project-visual{background:linear-gradient(135deg,#1b2945,#142b35)}
@@ -608,12 +618,18 @@ button:active {
     @media(max-width:780px){
       .nav-links{background:rgba(13,20,37,.98);border-color:rgba(145,161,220,.2)}
       .nav-links a{color:#d0d9ec;border-bottom-color:rgba(145,161,220,.12)}
+      .nav-actions{gap:5px}
+      .language-toggle{position:static;transform:none;width:40px;min-width:40px;height:40px;padding:0}
+      .language-toggle span{display:none}
       .certificates-grid{grid-template-columns:1fr}
       .project-card{flex-basis:min(82vw,440px)}
       .project-image{height:220px}
       .hero-meta{grid-template-columns:repeat(3,minmax(0,1fr))}
       .meta-item{flex-direction:column;justify-content:center;text-align:center;gap:7px;padding:12px 8px;font-size:10px}
       .meta-item i{width:35px;height:35px;flex-basis:35px}
+      html[dir="ltr"] .timeline:before{left:8px}
+      html[dir="ltr"] .timeline-item{padding:0 0 20px 32px}
+      html[dir="ltr"] .timeline-dot{left:0}
     }
     @media(max-width:560px){
       .nav-wrap{top:8px}
@@ -652,7 +668,7 @@ button:active {
       }
       .meta-item i{width:35px;height:35px;flex-basis:35px}
       .projects-grid{gap:13px;padding-bottom:15px}
-      .project-card{flex-basis:86vw}
+      .project-card{flex-basis:66vw}
       .project-image{height:190px}
       .section-head{margin-bottom:28px}
       .glass{border-radius:19px}
@@ -663,7 +679,7 @@ button:active {
       .terminal{width:205px}
       .vscode-code{font-size:7px}
       .meta-item{flex-basis:178px}
-      .project-card{flex-basis:88vw}
+      .project-card{flex-basis:66vw}
     }
     @media(prefers-reduced-motion:reduce){
       .logo-stage,.orbit,.float-chip{animation:none!important}
@@ -681,8 +697,11 @@ button:active {
     <div class="nav-links" id="navLinks">
       <a href="#home" class="active">خانه</a><a href="#about">درباره من</a><a href="#skills">مهارت‌ها</a><a href="#experience">سوابق کاری</a><a href="#projects">پروژه‌ها</a><a href="#certificates">مدارک و تحصیلات</a><a href="#services">خدمات</a><a href="#contact">تماس با من</a>
     </div>
-    <a class="nav-cta" href="#contact">شروع همکاری <i class="fa-solid fa-arrow-left"></i></a>
-    <button class="menu-toggle" id="menuToggle" aria-label="باز کردن منو" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+    <div class="nav-actions">
+      <button class="language-toggle" id="languageToggle" type="button" aria-label="تغییر زبان به انگلیسی"><i class="fa-solid fa-globe"></i><span>EN</span></button>
+      <button class="menu-toggle" id="menuToggle" aria-label="باز کردن منو" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+      <a class="nav-cta" href="#contact">شروع همکاری <i class="fa-solid fa-arrow-left"></i></a>
+    </div>
   </nav></div>
 
   <main>
@@ -807,10 +826,58 @@ button:active {
     menuToggle.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');menuToggle.setAttribute('aria-expanded',String(open));menuToggle.innerHTML=open?'<i class="fa-solid fa-xmark"></i>':'<i class="fa-solid fa-bars"></i>';});
     navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');menuToggle.innerHTML='<i class="fa-solid fa-bars"></i>';}));
 
+    const englishText={
+      'ایلیا رستمی':'Eilia Rostami','لوگوی ایلیا رستمی':'Logo of Eilia Rostami','توسعه‌دهنده وب':'Web Developer','خانه':'Home','درباره من':'About','مهارت‌ها':'Skills','سوابق کاری':'Experience','پروژه‌ها':'Projects','مدارک و تحصیلات':'Certificates','خدمات':'Services','تماس با من':'Contact','شروع همکاری':'Let’s work together',
+      'سلام، من':'Hi, I’m','هستم':'','آماده یادگیری، ساختن و خلق ایده‌های تازه':'Ready to learn, build, and bring new ideas to life','طراح تجربه دیجیتال':'Digital Experience Designer','علاقه‌مند به هوش مصنوعی':'AI Enthusiast','ایده‌ها را با خلاقیت و کدنویسی به تجربه‌های دیجیتال مدرن تبدیل می‌کنم. به ساخت وب‌سایت‌های کاربردی، حل مسائل فنی و کشف فرصت‌های تازه در دنیای هوش مصنوعی علاقه دارم.':'I turn ideas into modern digital experiences through creativity and code. I enjoy building useful websites, solving technical problems, and exploring new opportunities in AI.',
+      'مشاهده پروژه‌ها':'View Projects','ارتباط با من':'Get in Touch','۳ سال تجربه فعالیت':'3 years of experience','توسعه وب و طراحی دیجیتال':'Web Development & Digital Design','نمایش لوگوی شخصی':'Personal logo display','لوگوی رسمی ایلیا رستمی':'Official logo of Eilia Rostami','نمایی از کدنویسی در محیطی شبیه VS Code':'A coding view in a VS Code-style editor',
+      'درباره من':'About Me','فراتر از کدنویسی، خلق تجربه‌های متفاوت':'Beyond code, creating distinctive experiences','ترکیبی از کنجکاوی، منطق و خلاقیت برای ساخت راهکارهای دیجیتال بهتر.':'A mix of curiosity, logic, and creativity to build better digital solutions.','هویت شخصی من؛ امضای من در دنیای دیجیتال':'My personal identity and signature in the digital world','سلام! خوشحالم که اینجا هستی.':'Hello! I’m glad you’re here.','من ایلیا رستمی هستم؛ توسعه‌دهنده وب و علاقه‌مند به دنیای فناوری، طراحی خلاقانه و هوش مصنوعی. در طول سه سال فعالیت خود در زمینه طراحی و توسعه وب‌سایت، تلاش کرده‌ام ایده‌ها را به تجربه‌های دیجیتال مدرن، کاربردی و زیبا تبدیل کنم. به یادگیری مداوم، حل مسائل فنی و ساخت پروژه‌های خلاقانه علاقه دارم. برای من هر پروژه فرصتی است تا چیزی تازه یاد بگیرم، جزئیات را بهتر کنم و تجربه‌ای ارزشمندتر بسازم.':'I’m Eilia Rostami, a web developer interested in technology, creative design, and artificial intelligence. Over three years of designing and developing websites, I’ve worked to turn ideas into modern, useful, and beautiful digital experiences. I enjoy continuous learning, solving technical problems, and building creative projects. Every project is a chance to learn something new, refine the details, and create a more valuable experience.',
+      'خلاق و نوآور':'Creative & Innovative','نگاه متفاوت به ایده‌ها و راهکارها':'A fresh perspective on ideas and solutions','یادگیری مداوم':'Continuous Learning','دنبال‌کردن فناوری‌های تازه':'Keeping up with emerging technologies','حل مسئله':'Problem Solving','تفکر تحلیلی و عیب‌یابی دقیق':'Analytical thinking and careful debugging','توجه به جزئیات':'Attention to Detail','اهمیت به تجربه و کیفیت طراحی':'Focused on experience and design quality','۱۶':'16','سال سن':'years old','۳+':'3+','سال فعالیت':'years active','وب':'Web','حوزه تخصصی':'area of expertise','حوزه مورد علاقه':'area of interest',
+      'جعبه ابزار من':'My Toolkit','مهارت‌ها و فناوری‌هایی که با آن‌ها کار می‌کنم':'Skills and technologies I work with','فناوری‌هایی که در مسیر یادگیری و توسعه پروژه‌ها از آن‌ها استفاده می‌کنم.':'Technologies I use while learning and building projects.','فرانت‌اند':'Frontend','بک‌اند':'Backend','پایگاه داده':'Database','سیستم‌های مدیریت محتوا':'Content Management Systems','فناوری‌های هوشمند':'Intelligent Technologies','ابزارها و بهینه‌سازی':'Tools & Optimization',
+      'مسیر حرفه‌ای':'Career Path','مسیر حرفه‌ای من':'My Professional Journey','تجربه‌هایی که در مسیر توسعه وب و مدیریت وب‌سایت به دست آورده‌ام.':'Experience gained in web development and website management.','توسعه‌دهنده وب مستقل':'Freelance Web Developer','۳ سال فعالیت':'3 years','فعالیت در زمینه طراحی و توسعه وب‌سایت‌های مدرن، پیاده‌سازی رابط کاربری، توسعه قابلیت‌های Frontend، بهینه‌سازی عملکرد وب‌سایت و رفع مشکلات فنی.':'Designed and developed modern websites, implemented user interfaces and frontend features, optimized website performance, and resolved technical issues.','طراحی واکنش‌گرا':'Responsive Design','مدیریت وب‌سایت و SEO':'Website Management & SEO','فعالیت در زمینه مدیریت و نگهداری وب‌سایت کارافام، بهینه‌سازی ساختار سئو، بررسی و رفع مشکلات فنی، دیباگ و عیب‌یابی، بهبود عملکرد صفحات، مدیریت WordPress و ارتقای تجربه کاربری.':'Managed and maintained the Karafam website, improved its SEO structure, investigated technical issues, debugged and troubleshot problems, improved page performance, managed WordPress, and enhanced user experience.','بهینه‌سازی محتوا':'Content Optimization',
+      'نمونه‌کارها':'Selected Work','پروژه‌هایی که روی آن‌ها کار کرده‌ام':'Projects I’ve Worked On','چند نمونه از تجربه‌های من در طراحی، توسعه و مدیریت وب‌سایت.':'A few examples of my experience designing, developing, and managing websites.','تصویر صفحه اصلی فروشگاه دانه':'Screenshot of the Dane online store homepage','تصویر پروژه: images/daneproducts.jpg':'Project image: images/daneproducts.jpg','فروشگاه اینترنتی دانه | Dane Products':'Dane Products Online Store','طراحی و توسعه یک وب‌سایت فروشگاهی برای برند دانه با تمرکز بر تجربه خرید آسان، طراحی رابط کاربری مدرن و نمایش حرفه‌ای محصولات.':'Designed and developed an online store for Dane, focused on an easy shopping experience, a modern interface, and polished product presentation.','تجربه کاربری':'User Experience','بهینه‌سازی':'Optimization','مشاهده وب‌سایت':'Visit Website','تصویر صفحه اصلی وب‌سایت کارافام':'Screenshot of the Karafam website homepage','تصویر پروژه: images/karafam.jpg':'Project image: images/karafam.jpg','کارافام | Karafam':'Karafam','فعالیت در زمینه مدیریت فنی وب‌سایت کارافام، بهینه‌سازی ساختار صفحات، رفع مشکلات فنی و بهبود وضعیت سئو و تجربه کاربری.':'Managed the technical side of the Karafam website, optimized page structure, resolved technical issues, and improved SEO and user experience.','مدیریت محتوا':'Content Management','نگهداری':'Maintenance',
+      'آموزش و دستاوردها':'Learning & Achievements','مدارک و مسیر یادگیری':'Certificates & Learning','دوره‌ها و گواهی‌هایی که در مسیر یادگیری برنامه‌نویسی و فناوری گذرانده‌ام.':'Courses and certificates earned while learning programming and technology.','آکادمی یاسان':'Yasan Academy','مبانی برنامه‌نویسی با Python':'Programming Fundamentals with Python','گواهی دوره CS50 Python':'CS50 Python Certificate','توسعه وب':'Web Development','گواهی دوره CS50 Web':'CS50 Web Certificate','هوش مصنوعی':'Artificial Intelligence','گواهی دوره CS50 AI':'CS50 AI Certificate','مبانی علوم کامپیوتر':'Introduction to Computer Science','گواهی دوره CS50':'CS50 Certificate','برنامه‌نویسی Python':'Python Programming','گواهی آموزش پایتون':'Python Training Certificate','مهارت زبانی':'Language Proficiency','زبان انگلیسی':'English','سطح مهارت: B2':'Proficiency: B2',
+      'چه خدماتی ارائه می‌دهم؟':'What I Offer','از شکل‌گیری ایده تا اجرای یک تجربه دیجیتال کاربردی.':'From the first idea to a practical digital experience.','طراحی و توسعه وب‌سایت':'Website Design & Development','ساخت وب‌سایت متناسب با نیاز و هویت هر کسب‌وکار.':'Websites tailored to each business’s needs and identity.','رابط کاربری واکنش‌گرا':'Responsive User Interfaces','تجربه‌ای روان و سازگار با موبایل، تبلت و دسکتاپ.':'A smooth experience across phones, tablets, and desktops.','طراحی فروشگاه اینترنتی':'Online Store Design','پیاده‌سازی ساختار فروشگاهی و امکانات خرید آنلاین.':'Online store setup and shopping features.','توسعه با WordPress':'WordPress Development','راه‌اندازی، توسعه و مدیریت وب‌سایت‌های وردپرسی.':'Setup, development, and management of WordPress websites.','بهینه‌سازی سرعت':'Speed Optimization','بررسی عوامل مؤثر بر عملکرد و سرعت بارگذاری.':'Identifying factors that affect performance and loading speed.','سئو تکنیکال':'Technical SEO','بهبود ساختار فنی صفحات و دسترسی موتورهای جست‌وجو.':'Improving page structure and search engine accessibility.','رفع مشکلات فنی':'Technical Troubleshooting','عیب‌یابی، بررسی خطاها و اصلاح مشکلات وب‌سایت.':'Diagnosing errors and fixing website issues.','قابلیت‌های هوش مصنوعی':'AI Features','بررسی و پیاده‌سازی قابلیت‌های هوشمند در محصولات دیجیتال.':'Exploring and implementing intelligent features in digital products.',
+      'ارتباط با من':'Get in Touch','بیایید یک ایده جذاب را به واقعیت تبدیل کنیم!':'Let’s turn a great idea into reality!','اگر برای توسعه وب‌سایت یا اجرای یک ایده دیجیتال به دنبال همکاری هستید، خوشحال می‌شوم با شما در ارتباط باشم.':'If you’re looking for a partner to build a website or bring a digital idea to life, I’d be glad to hear from you.','راه‌های ارتباطی':'Contact Details','برای مطرح‌کردن ایده، پرسیدن سؤال یا شروع یک همکاری می‌توانی از راه‌های زیر با من در ارتباط باشی.':'Reach out using the details below to share an idea, ask a question, or start a project.','ایمیل':'Email','شماره تماس':'Phone','وب‌سایت شخصی':'Personal Website','کپی ایمیل':'Copy email','تماس تلفنی':'Call','ارسال پیام از طریق ایمیل':'Send a Message by Email','نام شما':'Your Name','نام و نام خانوادگی':'First and last name','ایمیل شما':'Your Email','متن پیام':'Message','پیام خود را بنویسید...':'Write your message...','آماده‌سازی ایمیل':'Prepare Email','برنامه ایمیل در حال باز شدن است؛ ارسال پیام را در آن نهایی کن.':'Your email app is opening. Complete sending your message there.','طراحی و توسعه با دقت، خلاقیت و علاقه به فناوری':'Designed and developed with care, creativity, and a love of technology','ایلیا رستمی — تمامی حقوق محفوظ است.':'Eilia Rostami — All rights reserved.','تمامی حقوق محفوظ است.':'All rights reserved.','بازگشت به بالای صفحه':'Back to top','باز کردن منو':'Open menu','ناوبری اصلی':'Main navigation','صفحه اصلی':'Home','دوره‌ها و گواهی‌هایی که در مسیر یادگیری برنامه‌نویسی و فناوری گذرانده‌ام.':'Courses and certificates earned while learning programming and technology.','تغییر زبان به انگلیسی':'Switch language to English'
+    };
+    const languageToggle=document.getElementById('languageToggle');
+    const originalTitle=document.title;
+    const originalTextNodes=new WeakMap(),originalAttributes=new WeakMap();
+    function setLanguage(language){
+      const english=language==='en';
+      document.documentElement.lang=english?'en':'fa';
+      document.documentElement.dir=english?'ltr':'rtl';
+      const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+      while(walker.nextNode()){
+        const node=walker.currentNode;
+        if(!originalTextNodes.has(node))originalTextNodes.set(node,node.nodeValue);
+        const source=originalTextNodes.get(node),trimmed=source.trim();
+        if(!trimmed)continue;
+        node.nodeValue=english&&Object.hasOwn(englishText,trimmed)?source.replace(trimmed,englishText[trimmed]):source;
+      }
+      document.querySelectorAll('[aria-label],[alt],[placeholder]').forEach(element=>['aria-label','alt','placeholder'].forEach(attribute=>{
+        const key=attribute+'|'+element.tagName+'|'+(element.id||element.className||'');
+        let originals=originalAttributes.get(element);if(!originals){originals={};originalAttributes.set(element,originals);}
+        if(!(attribute in originals))originals[attribute]=element.getAttribute(attribute);
+        const value=originals[attribute];if(!value)return;
+        element.setAttribute(attribute,english&&Object.hasOwn(englishText,value)?englishText[value]:value);
+      }));
+      document.title=english?'Eilia Rostami | Web Developer & Digital Experience Creator':originalTitle;
+      document.querySelector('meta[name="description"]').content=english?'The personal website of Eilia Rostami, web developer, digital experience designer, and AI enthusiast.':'وب‌سایت شخصی ایلیا رستمی؛ توسعه‌دهنده وب، طراح تجربه دیجیتال و علاقه‌مند به هوش مصنوعی.';
+      document.querySelector('meta[property="og:title"]').content=document.title;
+      document.querySelector('meta[property="og:description"]').content=english?'I turn ideas into modern digital experiences through creativity and code.':'ایده‌ها را با خلاقیت و کدنویسی به تجربه‌های دیجیتال مدرن تبدیل می‌کنم.';
+      document.querySelector('meta[property="og:locale"]').content=english?'en_US':'fa_IR';
+      languageToggle.querySelector('span').textContent=english?'فا':'EN';
+      languageToggle.setAttribute('aria-label',english?'Switch language to Persian':'تغییر زبان به انگلیسی');
+      document.querySelector('.navbar').setAttribute('aria-label',english?'Main navigation':'ناوبری اصلی');
+      try{localStorage.setItem('portfolio-language',language);}catch{}
+    }
+    languageToggle.addEventListener('click',()=>{setLanguage(document.documentElement.lang==='fa'?'en':'fa');phraseIndex=0;charIndex=0;deleting=false;typed.textContent='';});
+    let savedLanguage='fa';try{savedLanguage=localStorage.getItem('portfolio-language')||'fa';}catch{}
+
     // عنوان تایپ‌شونده
-    const phrases=['توسعه‌دهنده وب','طراح تجربه دیجیتال','علاقه‌مند به هوش مصنوعی'];
+    if(savedLanguage==='en')setLanguage('en');
     const typed=document.getElementById('typed');let phraseIndex=0,charIndex=0,deleting=false;
-    function typeEffect(){const phrase=phrases[phraseIndex];typed.textContent=phrase.slice(0,charIndex);if(!deleting&&charIndex<phrase.length){charIndex++;setTimeout(typeEffect,85);}else if(deleting&&charIndex>0){charIndex--;setTimeout(typeEffect,42);}else{deleting=!deleting;if(!deleting)phraseIndex=(phraseIndex+1)%phrases.length;setTimeout(typeEffect,850);}}
+    function typeEffect(){const phrase=document.documentElement.lang==='en'?['Web Developer','Digital Experience Designer','AI Enthusiast'][phraseIndex]:['توسعه‌دهنده وب','طراح تجربه دیجیتال','علاقه‌مند به هوش مصنوعی'][phraseIndex];typed.textContent=phrase.slice(0,charIndex);if(!deleting&&charIndex<phrase.length){charIndex++;setTimeout(typeEffect,85);}else if(deleting&&charIndex>0){charIndex--;setTimeout(typeEffect,42);}else{deleting=!deleting;if(!deleting)phraseIndex=(phraseIndex+1)%3;setTimeout(typeEffect,850);}}
     typeEffect();
 
     // نمایش تدریجی بخش‌ها
@@ -828,7 +895,7 @@ button:active {
     document.getElementById('copyEmail').addEventListener('click',async()=>{const btn=document.getElementById('copyEmail');try{await navigator.clipboard.writeText('eiliarostami990@gmail.com');btn.innerHTML='<i class="fa-solid fa-check"></i>';}catch{btn.innerHTML='<i class="fa-regular fa-envelope"></i>';window.location.href='mailto:eiliarostami990@gmail.com';}setTimeout(()=>btn.innerHTML='<i class="fa-regular fa-copy"></i>',1800);});
 
     // فرم بدون بک‌اند؛ باز کردن نرم‌افزار ایمیل به‌جای نمایش ارسال موفق
-    document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();const form=e.currentTarget;if(!form.reportValidity())return;const name=document.getElementById('name').value.trim(),email=document.getElementById('email').value.trim(),message=document.getElementById('message').value.trim();const subject=encodeURIComponent('پیام از وب‌سایت شخصی - '+name);const body=encodeURIComponent('نام: '+name+'\nایمیل: '+email+'\n\n'+message);document.getElementById('formStatus').textContent='برنامه ایمیل در حال باز شدن است؛ ارسال پیام را در آن نهایی کن.';window.location.href='mailto:eiliarostami990@gmail.com?subject='+subject+'&body='+body;});
+    document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();const form=e.currentTarget;if(!form.reportValidity())return;const english=document.documentElement.lang==='en',name=document.getElementById('name').value.trim(),email=document.getElementById('email').value.trim(),message=document.getElementById('message').value.trim();const subject=encodeURIComponent((english?'Message from personal website - ':'پیام از وب‌سایت شخصی - ')+name);const body=encodeURIComponent((english?'Name: ':'نام: ')+name+'\n'+(english?'Email: ':'ایمیل: ')+email+'\n\n'+message);document.getElementById('formStatus').textContent=english?'Your email app is opening. Complete sending your message there.':'برنامه ایمیل در حال باز شدن است؛ ارسال پیام را در آن نهایی کن.';window.location.href='mailto:eiliarostami990@gmail.com?subject='+subject+'&body='+body;});
     document.getElementById('year').textContent=new Date().getFullYear();
 
     // ذرات سبز سبک روی بوم؛ با تنظیم کاهش حرکت غیرفعال می‌شود
